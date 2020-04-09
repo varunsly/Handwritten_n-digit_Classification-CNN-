@@ -5,6 +5,7 @@ from keras.layers import Conv2D,MaxPooling2D
 from  keras.datasets import mnist
 from keras.layers.normalization import BatchNormalization
 from keras.utils import np_utils
+from keras.preprocessing.image import ImageDataGenerator
 
 
 #Data from MNIST dataset(Subset of NIST)
@@ -73,9 +74,19 @@ model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
-model.fit(feature_train,target_train,batch_size=126, epochs=2, validation_data=(feature_test,target_test))
 
+#Invoke this when not using data augmentation for the reducing the overfiting 
+#model.fit(feature_train,target_train,batch_size=126, epochs=2, validation_data=(feature_test,target_test))
+
+
+train_generator=ImageDataGenerator(rotation_range=7, width_shift_range=0.05, height_shift_range=0.07, shear_range=0.2,zoom_range=0.04)
+
+test_generator=ImageDataGenerator()
+
+train_generator=train_generator.flow(feature_train,target_train,batch_size=70)
+test_generator=test_generator.flow(feature_test,target_test,batch_size=70)
+
+model.fit_generator(train_generator,steps_per_epoch=60000//70, epochs=5, validation_data=test_generator, validation_steps=10000//70)
 score=model.evaluate(feature_test,target_test)
-
 print("Test Accuracy: %.2f" %score[1])
 
