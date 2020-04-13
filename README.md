@@ -22,7 +22,7 @@ The Data Augmentation is implemented to reduce the further OverFitting
  Data Agumentation Implemented CNN Model
  
   # Loss Vs Validation_Loss 
-  <img src="Various Factor/Data_Agumentation_Loss.png">
+  <img src="Various Factor Graph/Data_Agumentation_Loss.png">
  
  # Accuracy Vs Validation_Accuracy
  <img src = "Various Factor Graph/Data_Agumentation_Accuracy.png">
