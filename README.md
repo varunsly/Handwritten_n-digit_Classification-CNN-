@@ -11,4 +11,6 @@ The Data Augmentation is implemented to reduce the further OverFitting
  Simple CNN Model
  
  # Loss Vs Validation_Loss 
- ![](Various Factor Graph/SI_Loss.png)
+ 
+<img src="Various Factor Graph/SI_Loss.png">
+
